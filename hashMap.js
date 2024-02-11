@@ -58,7 +58,17 @@ function hashMap() {
         table = new Array(16);
     };
 
-    return { hash, set, get, has, remove, length, clear };
+    const keys = () => {
+        let keys = [];
+
+        for (let i in table) {
+            if (table[i]) { keys.push(table[i]) };
+        };
+
+        return keys;
+    };
+
+    return { hash, set, get, has, remove, length, clear, keys };
 };
 
 export { hashMap };
