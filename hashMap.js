@@ -54,7 +54,11 @@ function hashMap() {
         return count;
     };
 
-    return { hash, set, get, has, remove, length };
+    const clear = () => {
+        table = new Array(16);
+    };
+
+    return { hash, set, get, has, remove, length, clear };
 };
 
 export { hashMap };

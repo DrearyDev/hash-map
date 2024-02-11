@@ -17,3 +17,7 @@ console.log(hashObject.has('key'));
 hashObject.set('differentKey', 'differentValue');
 
 console.log(hashObject.length());
+
+hashObject.clear();
+
+console.log(hashObject.length());
