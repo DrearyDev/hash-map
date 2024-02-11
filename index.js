@@ -7,3 +7,5 @@ let hashObject = hashMap();
 hashObject.set('key', 'value');
 
 console.log(hashObject.get('key'));
+
+console.log(hashObject.has('key'));

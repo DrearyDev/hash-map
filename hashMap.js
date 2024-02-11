@@ -28,7 +28,13 @@ function hashMap() {
         return table[hashCode % table.length] ?? null;
     };
 
-    return { hash, set, get };
+    const has = (key) => {
+        let hashCode = hash(key);
+
+        return !!(table[hashCode % table.length]);
+    };
+
+    return { hash, set, get, has };
 };
 
 export { hashMap };
