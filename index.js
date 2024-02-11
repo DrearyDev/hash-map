@@ -2,4 +2,8 @@
 
 import { hashMap } from "./hashMap.js";
 
-hashMap();
+let hashObject = hashMap();
+
+let hashCode = hashObject.hash('testkey');
+
+console.log(hashCode);
