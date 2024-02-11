@@ -13,3 +13,7 @@ console.log(hashObject.has('key'));
 console.log(hashObject.remove('key'));
 
 console.log(hashObject.has('key'));
+
+hashObject.set('differentKey', 'differentValue');
+
+console.log(hashObject.length());

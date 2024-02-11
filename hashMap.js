@@ -19,7 +19,6 @@ function hashMap() {
         let hashCode = hash(key);
 
         table[hashCode % table.length] = value;
-        console.log(table);
     };
 
     const get = (key) => {
@@ -45,7 +44,17 @@ function hashMap() {
         return false;
     };
 
-    return { hash, set, get, has, remove };
+    const length = () => {
+        let count = 0;
+
+        for (let i in table) {
+            if (table[i]) { count++ };
+        };
+
+        return count;
+    };
+
+    return { hash, set, get, has, remove, length };
 };
 
 export { hashMap };
