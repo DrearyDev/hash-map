@@ -1,6 +1,7 @@
 'use strict';
 
 function hashMap() {
+    let table = new Array(16);
 
     const hash = (key) => {
         let hashCode = 0;
@@ -11,14 +12,17 @@ function hashMap() {
             hashCode = primeNumber * hashCode + key.charCodeAt(i);
         };
 
-        console.log(key);
-        console.log(hashCode);
-        console.log(hashCode % 16);
-
         return hashCode;
     };
 
-    return { hash };
+    const set = (key, value) => {
+        let hashCode = hash(key);
+
+        table[hashCode % table.length] = value;
+        console.log(table);
+    };
+
+    return { hash, set };
 };
 
 export { hashMap };
