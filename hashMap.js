@@ -22,7 +22,13 @@ function hashMap() {
         console.log(table);
     };
 
-    return { hash, set };
+    const get = (key) => {
+        let hashCode = hash(key);
+
+        return table[hashCode % table.length] ?? null;
+    };
+
+    return { hash, set, get };
 };
 
 export { hashMap };
