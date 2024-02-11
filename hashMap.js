@@ -34,7 +34,18 @@ function hashMap() {
         return !!(table[hashCode % table.length]);
     };
 
-    return { hash, set, get, has };
+    const remove = (key) => {
+        let hashCode = hash(key);
+
+        if (table[hashCode % table.length]) {
+            delete table[hashCode % table.length];
+            return true;
+        };
+
+        return false;
+    };
+
+    return { hash, set, get, has, remove };
 };
 
 export { hashMap };
