@@ -64,7 +64,17 @@ function hashMap() {
     const has = (key) => {
         let hashCode = hash(key);
 
-        return !!(table[hashCode % table.length]);
+        if (table[hashCode % table.length]) {
+            let linkedListLength = table[hashCode % table.length].getSize();
+
+            for (let i = 0; i < linkedListLength; i++) {
+                let linkedKey = Object.keys(table[hashCode % table.length].at(i).value)[0];
+
+                if (linkedKey === key) { return true };
+            };
+        };
+
+        return false;
     };
 
     const remove = (key) => {

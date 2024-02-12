@@ -25,5 +25,7 @@ hashObject.set('kid', 'no more vvoom');// key exist so value will be updated
 
 console.log(hashObject.get('kid'));
 
+console.log(hashObject.has('kid'));
+
 // console.log(hashObject.keys());
 
