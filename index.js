@@ -23,5 +23,7 @@ hashObject.set('kid', 'vvoom');
 hashObject.set('cat', 'vanessa');
 hashObject.set('kid', 'no more vvoom');// key exist so value will be updated
 
+console.log(hashObject.get('kid'));
+
 // console.log(hashObject.keys());
 
