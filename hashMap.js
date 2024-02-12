@@ -135,7 +135,25 @@ function hashMap() {
         return keys;
     };
 
-    return { hash, set, get, has, remove, length, clear, keys };
+    const values = () => {
+        let values = [];
+
+        for (let i in table) {
+            if (table[i]) {
+                let linkedListLength = table[i].getSize();
+
+                for (let k = 0; k < linkedListLength; k++) {
+                    let linkedValue = Object.values(table[i].at(k).value)[0];
+
+                    values.push(linkedValue);
+                };
+            };
+        };
+
+        return values;
+    };
+
+    return { hash, set, get, has, remove, length, clear, keys, values };
 };
 
 export { hashMap };

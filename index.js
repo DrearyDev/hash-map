@@ -38,3 +38,6 @@ console.log(hashObject.length());
 
 console.log(hashObject.keys());
 
+console.log(hashObject.values());
+
+
