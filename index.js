@@ -29,5 +29,12 @@ console.log(hashObject.has('kid'));
 
 console.log(hashObject.remove('cat'));
 
+hashObject.set('cat', 're-added-cat');
+
+hashObject.set('not-a-cat', '-meow-');
+
+console.log(hashObject.length());
+
+
 // console.log(hashObject.keys());
 

@@ -91,6 +91,7 @@ function hashMap() {
                     return true;
                 };
             };
+
         };
 
         return false;
@@ -100,7 +101,13 @@ function hashMap() {
         let count = 0;
 
         for (let i in table) {
-            if (table[i]) { count++ };
+            if (table[i]) {
+                let linkedListLength = table[i].getSize();
+
+                for (let k = 0; k < linkedListLength; k++) {
+                    count++;
+                };
+            };
         };
 
         return count;
