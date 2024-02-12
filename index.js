@@ -36,5 +36,5 @@ hashObject.set('not-a-cat', '-meow-');
 console.log(hashObject.length());
 
 
-// console.log(hashObject.keys());
+console.log(hashObject.keys());
 

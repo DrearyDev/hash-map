@@ -121,7 +121,15 @@ function hashMap() {
         let keys = [];
 
         for (let i in table) {
-            if (table[i]) { keys.push(table[i]) };
+            if (table[i]) {
+                let linkedListLength = table[i].getSize();
+
+                for (let k = 0; k < linkedListLength; k++) {
+                    let linkedKey = Object.keys(table[i].at(k).value)[0];
+
+                    keys.push(linkedKey);
+                };
+            };
         };
 
         return keys;
