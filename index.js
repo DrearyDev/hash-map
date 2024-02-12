@@ -2,32 +2,26 @@
 
 import { hashMap } from "./hashMap.js";
 
+// hashObject.set('jhon', 'vendetta');
+// hashObject.set('kyle', 'bobcat');
+// hashObject.set('bob', 'style');
+// hashObject.set('cartman', 'crazy');
+// hashObject.set('kasdf', 'jooojo');
+
 let hashObject = hashMap();
 
-hashObject.set('key', 'value');
+// hashObject.set('differentKey', 'differentValue');
 
-console.log(hashObject.get('key'));
+// console.log('number of key-value pairs in table: ' + hashObject.length());
 
-console.log(hashObject.has('key'));
+// console.log('clearing the table...');
+// hashObject.clear();
 
-console.log(hashObject.remove('key'));
-
-console.log(hashObject.has('key'));
-
-hashObject.set('differentKey', 'differentValue');
-
-console.log(hashObject.length());
-
-hashObject.clear();
-
-console.log(hashObject.length());
+// console.log('number of key-value pairs in table: ' + hashObject.length());
 
 hashObject.set('kid', 'vvoom');
-hashObject.set('kasdf', 'jooojo');
-hashObject.set('jhon', 'vendetta');
-hashObject.set('kyle', 'bobcat');
-hashObject.set('bob', 'style');
-hashObject.set('cartman', 'crazy');
+hashObject.set('cat', 'vanessa');
+hashObject.set('kid', 'no more vvoom');// key exist so value will be updated
 
-console.log(hashObject.keys());
+// console.log(hashObject.keys());
 

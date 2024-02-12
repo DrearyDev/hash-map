@@ -1,4 +1,5 @@
 'use strict';
+import { linkedList } from "./linkedList.js";
 
 function hashMap() {
     let table = new Array(16);
@@ -18,7 +19,28 @@ function hashMap() {
     const set = (key, value) => {
         let hashCode = hash(key);
 
-        table[hashCode % table.length] = value;
+        if (table[hashCode % table.length]) {//already something there
+
+            let linkedListLength = table[hashCode % table.length].getSize();
+
+            for (let i = 0; i < linkedListLength; i++) {//loop list to check for matching key
+                let linkedKey = Object.keys(table[hashCode % table.length].at(i).value)[0];
+
+                if (linkedKey === key) {
+                    table[hashCode % table.length].at(i).value[key] = value;
+                    return;
+                };
+            };
+
+            // if no match found then append it key and value to list
+            table[hashCode % table.length].append({[key]: value});
+
+        } else {// nothing there so create the first linked list
+            let linked = linkedList();
+            linked.append({[key]: value});
+
+            table[hashCode % table.length] = linked;
+        };
     };
 
     const get = (key) => {
