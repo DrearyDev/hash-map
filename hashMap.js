@@ -3,6 +3,8 @@ import { linkedList } from "./linkedList.js";
 
 function hashMap() {
     let table = new Array(16);
+    let capacity = 0;
+    let loadFactor = 0.75;
 
     const hash = (key) => {
         let hashCode = 0;
@@ -16,14 +18,23 @@ function hashMap() {
         return hashCode;
     };
 
+    const growTable = () => {
+        capacity = 0;
+        let keyValuePairs = entries();
+        table = new Array(table.length * 2);
+
+        for (let i in keyValuePairs) {
+            set(keyValuePairs[i][0], keyValuePairs[i][1]);
+        };
+    };
+
     const set = (key, value) => {
         let hashCode = hash(key);
 
-        if (table[hashCode % table.length]) {//already something there
-
+        if (table[hashCode % table.length]) {
             let linkedListLength = table[hashCode % table.length].getSize();
 
-            for (let i = 0; i < linkedListLength; i++) {//loop list to check for matching key
+            for (let i = 0; i < linkedListLength; i++) {
                 let linkedKey = Object.keys(table[hashCode % table.length].at(i).value)[0];
 
                 if (linkedKey === key) {
@@ -32,15 +43,19 @@ function hashMap() {
                 };
             };
 
-            // if no match found then append it key and value to list
             table[hashCode % table.length].append({[key]: value});
 
-        } else {// nothing there so create the first linked list
+        } else {
+            capacity++;//only count new buckets filled
+
             let linked = linkedList();
             linked.append({[key]: value});
 
             table[hashCode % table.length] = linked;
         };
+
+        // check if table needs to grow
+        if (capacity >= (table.length * loadFactor)) { growTable() };
     };
 
     const get = (key) => {
@@ -87,6 +102,7 @@ function hashMap() {
                 let linkedKey = Object.keys(table[hashCode % table.length].at(i).value)[0];
 
                 if (linkedKey === key) {
+                    capacity--;
                     table[hashCode % table.length].removeAt(i);
                     return true;
                 };
