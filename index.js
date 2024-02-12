@@ -27,5 +27,7 @@ console.log(hashObject.get('kid'));
 
 console.log(hashObject.has('kid'));
 
+console.log(hashObject.remove('cat'));
+
 // console.log(hashObject.keys());
 

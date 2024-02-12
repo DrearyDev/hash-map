@@ -81,8 +81,16 @@ function hashMap() {
         let hashCode = hash(key);
 
         if (table[hashCode % table.length]) {
-            delete table[hashCode % table.length];
-            return true;
+            let linkedListLength = table[hashCode % table.length].getSize();
+
+            for (let i = 0; i < linkedListLength; i++) {
+                let linkedKey = Object.keys(table[hashCode % table.length].at(i).value)[0];
+
+                if (linkedKey === key) {
+                    table[hashCode % table.length].removeAt(i);
+                    return true;
+                };
+            };
         };
 
         return false;
