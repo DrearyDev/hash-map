@@ -40,4 +40,6 @@ console.log(hashObject.keys());
 
 console.log(hashObject.values());
 
+console.log(hashObject.entries());
+
 

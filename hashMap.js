@@ -153,7 +153,26 @@ function hashMap() {
         return values;
     };
 
-    return { hash, set, get, has, remove, length, clear, keys, values };
+    const entries = () => {
+        let entries = [];
+
+        for (let i in table) {
+            if (table[i]) {
+                let linkedListLength = table[i].getSize();
+
+                for (let k = 0; k < linkedListLength; k++) {
+                    let linkedKey = Object.keys(table[i].at(k).value)[0];
+                    let linkedValue = Object.values(table[i].at(k).value)[0];
+
+                    entries.push([linkedKey, linkedValue]);
+                };
+            };
+        };
+
+        return entries;
+    };
+
+    return { hash, set, get, has, remove, length, clear, keys, values, entries };
 };
 
 export { hashMap };
