@@ -87,9 +87,24 @@ function hashSet() {
         return false;
     };
 
+    const length = () => {
+        let count = 0;
 
+        for (let i in table) {
+            if (table[i]) {
+                console.log(table[i].toString());
+                let linkedListLength = table[i].getSize();
 
-    return { hash, set, has, remove };
+                for (let k = 0; k < linkedListLength; k++) {
+                    count++;
+                };
+            };
+        };
+
+        return count;
+    };
+
+    return { hash, set, has, remove, length };
 };
 
 export { hashSet };

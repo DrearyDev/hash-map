@@ -10,6 +10,12 @@ console.log(test.hash('testvalue'));
 
 test.set('test');
 
+test.set('test2');
+
+test.set('test3');
+
+test.set('tessss');
+
 test.set('another');
 
 test.set('test');//overwrites original
@@ -22,4 +28,4 @@ console.log(test.remove('another'));
 
 console.log(test.remove('another'));
 
-// console.log(test.length());
+console.log(test.length());
