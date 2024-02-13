@@ -33,3 +33,17 @@ console.log(test.length());
 test.clear();//removes everything
 
 console.log(test.length());
+
+test.set('key1')
+
+test.set('key2')
+
+test.set('key3')
+
+test.set('key4')
+
+test.set('test3')
+
+test.set('tessss')
+
+console.log(test.keys());

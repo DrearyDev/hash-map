@@ -108,7 +108,23 @@ function hashSet() {
         table = new Array(16);
     };
 
-    return { hash, set, has, remove, length, clear };
+    const keys = () => {
+        let keys = [];
+
+        for (let i in table) {
+            if (table[i]) {
+                let linkedListLength = table[i].getSize();
+
+                for (let k = 0; k < linkedListLength; k++) {
+                    keys.push(table[i].at(k).value);
+                };
+            };
+        };
+
+        return keys;
+    };
+
+    return { hash, set, has, remove, length, clear, keys };
 };
 
 export { hashSet };
