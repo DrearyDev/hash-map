@@ -19,7 +19,34 @@ function hashSet() {
         return hashCode;
     };
 
-    return { hash };
+    const set = (key) => {
+        let hashCode = hash(key);
+
+        if (table[hashCode % table.length]) {
+            let linkedListLength = table[hashCode % table.length].getSize();
+
+            for (let i = 0; i < linkedListLength; i++) {
+                let linkedKey = table[hashCode % table.length].at(i).value;
+
+                //dont add it if it already exists
+                if (linkedKey === key) { return };
+            };
+
+            table[hashCode % table.length].append(key);
+
+        } else {
+            capacity++;
+
+            let linked = linkedList();
+            linked.append(key);
+
+            table[hashCode % table.length] = linked;
+        };
+
+        console.log(table[hashCode % table.length].toString());
+    };
+
+    return { hash, set };
 };
 
 export { hashSet };
