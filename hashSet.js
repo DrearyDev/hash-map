@@ -46,7 +46,23 @@ function hashSet() {
         console.log(table[hashCode % table.length].toString());
     };
 
-    return { hash, set };
+    const has = (key) => {
+        let hashCode = hash(key);
+
+        if (table[hashCode % table.length]) {
+            let linkedListLength = table[hashCode % table.length].getSize();
+
+            for (let i = 0; i < linkedListLength; i++) {
+                let linkedKey = table[hashCode % table.length].at(i).value;
+
+                if (linkedKey === key) { return true };
+            };
+        };
+
+        return false;
+    };
+
+    return { hash, set, has };
 };
 
 export { hashSet };

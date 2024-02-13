@@ -13,3 +13,5 @@ test.set('test');
 test.set('another');
 
 test.set('test');//overwrites original
+
+console.log(test.has('another'));
