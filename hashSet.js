@@ -62,7 +62,27 @@ function hashSet() {
         return false;
     };
 
-    return { hash, set, has };
+    const remove = (key) => {
+        let hashCode = hash(key);
+
+        if (table[hashCode % table.length]) {
+            let linkedListLength = table[hashCode % table.length].getSize();
+
+            for (let i = 0; i < linkedListLength; i++) {
+                let linkedKey = table[hashCode % table.length].at(i).value;
+
+                if (linkedKey === key) {
+                    capacity--;
+                    table[hashCode % table.length].removeAt(i);
+                    return true;
+                };
+            };
+        };
+
+        return false;
+    };
+
+    return { hash, set, has, remove };
 };
 
 export { hashSet };

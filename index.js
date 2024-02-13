@@ -15,3 +15,9 @@ test.set('another');
 test.set('test');//overwrites original
 
 console.log(test.has('another'));
+
+console.log('----------');
+
+console.log(test.remove('another'));
+
+console.log(test.remove('another'));
