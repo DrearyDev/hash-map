@@ -21,3 +21,5 @@ console.log('----------');
 console.log(test.remove('another'));
 
 console.log(test.remove('another'));
+
+// console.log(test.length());

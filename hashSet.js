@@ -68,6 +68,11 @@ function hashSet() {
         if (table[hashCode % table.length]) {
             let linkedListLength = table[hashCode % table.length].getSize();
 
+            if (linkedListLength === 1) {
+                delete table[hashCode % table.length];
+                return true;
+            };
+
             for (let i = 0; i < linkedListLength; i++) {
                 let linkedKey = table[hashCode % table.length].at(i).value;
 
@@ -81,6 +86,8 @@ function hashSet() {
 
         return false;
     };
+
+
 
     return { hash, set, has, remove };
 };
