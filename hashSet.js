@@ -104,7 +104,11 @@ function hashSet() {
         return count;
     };
 
-    return { hash, set, has, remove, length };
+    const clear = () => {
+        table = new Array(16);
+    };
+
+    return { hash, set, has, remove, length, clear };
 };
 
 export { hashSet };

@@ -29,3 +29,7 @@ console.log(test.remove('another'));
 console.log(test.remove('another'));
 
 console.log(test.length());
+
+test.clear();//removes everything
+
+console.log(test.length());
