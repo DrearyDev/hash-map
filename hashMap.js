@@ -12,7 +12,7 @@ function hashMap() {
         const primeNumber = 31;
 
         for (let i = 0; i < key.length; i++) {
-            hashCode = primeNumber * hashCode + key.charCodeAt(i);
+            hashCode = (primeNumber * hashCode + key.charCodeAt(i)) % table.length;
         };
 
         return hashCode;
@@ -31,19 +31,19 @@ function hashMap() {
     const set = (key, value) => {
         let hashCode = hash(key);
 
-        if (table[hashCode % table.length]) {
-            let linkedListLength = table[hashCode % table.length].getSize();
+        if (table[hashCode]) {
+            let linkedListLength = table[hashCode].getSize();
 
             for (let i = 0; i < linkedListLength; i++) {
-                let linkedKey = Object.keys(table[hashCode % table.length].at(i).value)[0];
+                let linkedKey = Object.keys(table[hashCode].at(i).value)[0];
 
                 if (linkedKey === key) {
-                    table[hashCode % table.length].at(i).value[key] = value;
+                    table[hashCode].at(i).value[key] = value;
                     return;
                 };
             };
 
-            table[hashCode % table.length].append({[key]: value});
+            table[hashCode].append({[key]: value});
 
         } else {
             capacity++;//only count new buckets filled
@@ -51,24 +51,25 @@ function hashMap() {
             let linked = linkedList();
             linked.append({[key]: value});
 
-            table[hashCode % table.length] = linked;
+            table[hashCode] = linked;
         };
 
         // check if table needs to grow
+        console.log(capacity);
         if (capacity >= (table.length * loadFactor)) { growTable() };
     };
 
     const get = (key) => {
         let hashCode = hash(key);
 
-        if (table[hashCode % table.length]) {
-            let linkedListLength = table[hashCode % table.length].getSize();
+        if (table[hashCode]) {
+            let linkedListLength = table[hashCode].getSize();
 
             for (let i = 0; i < linkedListLength; i++) {
-                let linkedKey = Object.keys(table[hashCode % table.length].at(i).value)[0];
+                let linkedKey = Object.keys(table[hashCode].at(i).value)[0];
 
                 if (linkedKey === key) {
-                    return table[hashCode % table.length].at(i).value[key];
+                    return table[hashCode].at(i).value[key];
                 };
             };
         };
@@ -79,11 +80,11 @@ function hashMap() {
     const has = (key) => {
         let hashCode = hash(key);
 
-        if (table[hashCode % table.length]) {
-            let linkedListLength = table[hashCode % table.length].getSize();
+        if (table[hashCode]) {
+            let linkedListLength = table[hashCode].getSize();
 
             for (let i = 0; i < linkedListLength; i++) {
-                let linkedKey = Object.keys(table[hashCode % table.length].at(i).value)[0];
+                let linkedKey = Object.keys(table[hashCode].at(i).value)[0];
 
                 if (linkedKey === key) { return true };
             };
@@ -95,15 +96,15 @@ function hashMap() {
     const remove = (key) => {
         let hashCode = hash(key);
 
-        if (table[hashCode % table.length]) {
-            let linkedListLength = table[hashCode % table.length].getSize();
+        if (table[hashCode]) {
+            let linkedListLength = table[hashCode].getSize();
 
             for (let i = 0; i < linkedListLength; i++) {
-                let linkedKey = Object.keys(table[hashCode % table.length].at(i).value)[0];
+                let linkedKey = Object.keys(table[hashCode].at(i).value)[0];
 
                 if (linkedKey === key) {
                     capacity--;
-                    table[hashCode % table.length].removeAt(i);
+                    table[hashCode].removeAt(i);
                     return true;
                 };
             };
