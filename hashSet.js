@@ -13,10 +13,18 @@ function hashSet() {
         const primeNumber = 31;
 
         for (let i = 0; i < key.length; i++) {
-            hashCode = primeNumber * hashCode + key.charCodeAt(i) % table.length;
+            hashCode = (primeNumber * hashCode + key.charCodeAt(i)) % table.length;
         };
 
         return hashCode;
+    };
+
+    const growTable = () => {
+        capacity = 0;
+        let keysArray = keys();
+        table = new Array(table.length * 2);
+
+        for (let i in keysArray) { set(keysArray[i]) };
     };
 
     const set = (key) => {
@@ -43,7 +51,7 @@ function hashSet() {
             table[hashCode] = linked;
         };
 
-        console.log(table[hashCode].toString());
+        if (capacity >= (table.length * loadFactor)) { growTable() };
     };
 
     const has = (key) => {

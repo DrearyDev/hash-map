@@ -6,8 +6,6 @@ import { hashSet } from './hashSet.js';
 
 let test = hashSet();
 
-console.log(test.hash('testvalue'));
-
 test.set('test');
 
 test.set('test2');
@@ -17,22 +15,6 @@ test.set('test3');
 test.set('tessss');
 
 test.set('another');
-
-test.set('test');//overwrites original
-
-console.log(test.has('another'));
-
-console.log('----------');
-
-console.log(test.remove('another'));
-
-console.log(test.remove('another'));
-
-console.log(test.length());
-
-test.clear();//removes everything
-
-console.log(test.length());
 
 test.set('key1')
 
@@ -45,5 +27,29 @@ test.set('key4')
 test.set('test3')
 
 test.set('tessss')
+
+test.set('kenny')
+
+test.set('cartman')
+
+test.set('stan')
+
+test.set('kyle')
+
+test.set('name')
+
+test.set('kimi')
+
+test.set('adsfadsfasdf')
+
+test.set('exampletext')
+
+test.set('keynovalue')
+
+test.set('string')
+
+test.set('tecz')
+
+
 
 console.log(test.keys());
