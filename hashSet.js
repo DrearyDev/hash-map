@@ -13,7 +13,7 @@ function hashSet() {
         const primeNumber = 31;
 
         for (let i = 0; i < key.length; i++) {
-            hashCode = primeNumber * hashCode + key.charCodeAt(i);
+            hashCode = primeNumber * hashCode + key.charCodeAt(i) % table.length;
         };
 
         return hashCode;
@@ -22,17 +22,17 @@ function hashSet() {
     const set = (key) => {
         let hashCode = hash(key);
 
-        if (table[hashCode % table.length]) {
-            let linkedListLength = table[hashCode % table.length].getSize();
+        if (table[hashCode]) {
+            let linkedListLength = table[hashCode].getSize();
 
             for (let i = 0; i < linkedListLength; i++) {
-                let linkedKey = table[hashCode % table.length].at(i).value;
+                let linkedKey = table[hashCode].at(i).value;
 
                 //dont add it if it already exists
                 if (linkedKey === key) { return };
             };
 
-            table[hashCode % table.length].append(key);
+            table[hashCode].append(key);
 
         } else {
             capacity++;
@@ -40,20 +40,20 @@ function hashSet() {
             let linked = linkedList();
             linked.append(key);
 
-            table[hashCode % table.length] = linked;
+            table[hashCode] = linked;
         };
 
-        console.log(table[hashCode % table.length].toString());
+        console.log(table[hashCode].toString());
     };
 
     const has = (key) => {
         let hashCode = hash(key);
 
-        if (table[hashCode % table.length]) {
-            let linkedListLength = table[hashCode % table.length].getSize();
+        if (table[hashCode]) {
+            let linkedListLength = table[hashCode].getSize();
 
             for (let i = 0; i < linkedListLength; i++) {
-                let linkedKey = table[hashCode % table.length].at(i).value;
+                let linkedKey = table[hashCode].at(i).value;
 
                 if (linkedKey === key) { return true };
             };
@@ -65,20 +65,20 @@ function hashSet() {
     const remove = (key) => {
         let hashCode = hash(key);
 
-        if (table[hashCode % table.length]) {
-            let linkedListLength = table[hashCode % table.length].getSize();
+        if (table[hashCode]) {
+            let linkedListLength = table[hashCode].getSize();
 
             if (linkedListLength === 1) {
-                delete table[hashCode % table.length];
+                delete table[hashCode];
                 return true;
             };
 
             for (let i = 0; i < linkedListLength; i++) {
-                let linkedKey = table[hashCode % table.length].at(i).value;
+                let linkedKey = table[hashCode].at(i).value;
 
                 if (linkedKey === key) {
                     capacity--;
-                    table[hashCode % table.length].removeAt(i);
+                    table[hashCode].removeAt(i);
                     return true;
                 };
             };
